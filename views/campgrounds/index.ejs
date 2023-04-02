@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate')%>
+<body>
+    <h1><u>UIDAI DataBase</u></h1>
+    <div>
+        <!-- <a href="/campgrounds/new">Add Details</a> -->
+    </div>
+        <% for(let campground of campgrounds) {%> 
+            <!-- <li><a href="/campgrounds/<%=campground._id%>"><%= campground.title %></a></li> -->
+            <% if(currentUser && campground.author.equals(currentUser._id)) {%>
+            <div class="card mb-3" >
+                <div class="row">
+                    <div class="col-md-2">
+                        <img class="img-fluid" alt="" src="<%= campground.images[0].url %>">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 class="card-title">Name : <%= campground.title %></h5>
+                                <p class="card-text">Address : <%= campground.description %></p>
+                                <p class="card-text">
+                                    <small class="text-muted">Father's Name : <%= campground.location %></small>
+                                </p>
+                                <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>">View <%=campground.title%></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %> 
+        <% } %>
